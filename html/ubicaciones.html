@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productos - Concretos del Pacífico</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/ubicaciones.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <img src="img/logo.png" alt="Logo Concretos" class="brand-logo">
+    <div class="menu">
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="Ingeniería.html">Ingeniería</a>
+      <a href="sostenibilidad.html">Sostenibilidad</a>
+      <a href="compra_nuestros_productos.html">Compra nuestros productos</a>
+    </div>
+    <a href="#" class="btn-cta" id="btnCotizar">Cotizar</a>
+  </div>
+</nav>
+
+<section class="ubis" id="ubicaciones">
+  <div class="map-wrap">
+    <div id="map"></div>
+    <aside class="map-panel">
+      <div class="panel-head">
+        <div class="field">
+          <input id="searchBox" type="text" placeholder="Dónde estamos">
+          <button id="searchBtn" type="button">🔎</button>
+        </div>
+        <div class="field">
+          <select id="productFilter">
+            <option value="todos">Producto Seleccionado: Todo</option>
+            <option value="concreto">Producto Seleccionado: Concreto</option>
+            <option value="agregados">Producto Seleccionado: Agregados</option>
+            <option value="cemento">Producto Seleccionado: Cemento</option>
+          </select>
+          <button id="geoBtn" type="button">📍</button>
+        </div>
+      </div>
+      <ul id="sitesList" class="sites"></ul>
+    </aside>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer">
+  <div class="container footer-columns">
+    <div class="footer-col">
+      <h4>Concretos del Pacífico</h4>
+      <ul class="footer-list">
+        <li><a href="#">Empresa Sinaloense</a></li>
+        <li><a href="#">Valores</a></li>
+        <li><a href="#">Misión</a></li>
+        <li><a href="#">Trabajo con nosotros</a></li>
+        <li><a href="#">Ética y profesionalismo</a></li>
+        <li><a href="#">Contáctanos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Media & Links</h4>
+      <ul class="footer-list">
+        <li><a href="#">Manifiesto de Servicio</a></li>
+        <li><a href="#">Sala de prensa</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Política y seguros</a></li>
+        <li><a href="#">Mapa de Sitio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Proyecto de Administración de Base de Datos</h4>
+      <p class="footer-text">Proyecto con fines de aprendizaje; cualquier parecido con una empresa real es coincidencia.</p>
+      <p class="footer-text"><strong>Universidad Politécnica de Sinaloa</strong></p>
+    </div>
+  </div>
+  <div class="legal-bar">
+    <div class="container legal-inner">
+      <p>© 2025 Concretos del Pacífico · Todos los derechos reservados.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><img src="img/Logo_de_Facebook.png" alt="Facebook" width="22" height="22"></a>
+        <a href="#" aria-label="X"><img src="img/X-Logo.png" alt="X" width="22" height="22"></a>
+        <a href="#" aria-label="YouTube"><img src="img/Youtube_logo.png" alt="YouTube" width="22" height="22"></a>
+        <a href="#" aria-label="Instagram"><img src="img/5968776.png" alt="Instagram" width="22" height="22"></a>
+        <a href="#" aria-label="TikTok"><img src="img/Tiktok-Logo-2016.png" alt="TikTok" width="22" height="22"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="cotizarModal" aria-hidden="true">
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="titleCot">
+    <button class="modal-close" type="button" aria-label="Cerrar">×</button>
+    <form id="formCotiza" class="quote-form">
+      <h2 id="titleCot" class="quote-title">Cotizaciones</h2>
+      <div class="quote-grid">
+        <div class="field"><label for="nombre">Nombre y apellido:</label><input type="text" id="nombre" name="nombre" autocomplete="name" /></div>
+        <div class="field"><label for="telefono">Teléfono:</label><input type="tel" id="telefono" name="telefono" autocomplete="tel" /></div>
+        <div class="field"><label for="correo">Correo Electrónico:</label><input type="email" id="correo" name="correo" autocomplete="email" /></div>
+        <div class="field"><label for="cp">Código Postal:</label><input type="text" id="cp" name="cp" inputmode="numeric" /></div>
+        <div class="field"><label for="ciudad">Ciudad/Municipio:</label><input type="text" id="ciudad" name="ciudad" /></div>
+        <div class="field"><label for="estado">Estado:</label><input type="text" id="estado" name="estado" /></div>
+      </div>
+      <h3 class="quote-subtitle">Productos</h3>
+      <p class="quote-help">Selecciona el producto que necesitas:</p>
+      <div class="products-row">
+        <label class="radio"><input type="radio" name="producto" value="cemento"><span>Cemento</span></label>
+        <label class="radio"><input type="radio" name="producto" value="concreto"><span>Concreto</span></label>
+        <label class="radio"><input type="radio" name="producto" value="agregados"><span>Agregados</span></label>
+        <label class="radio"><input type="radio" name="producto" value="aditivos"><span>Aditivos</span></label>
+        <label class="radio"><input type="radio" name="producto" value="acero"><span>Acero</span></label>
+      </div>
+      <hr class="quote-sep" />
+      <label class="check"><input type="checkbox" id="acepto" name="acepto"><span>Acepto</span></label>
+      <div class="quote-actions">
+        <button type="submit" class="btn btn-primary">Solicitar Cotización</button>
+        <button type="reset" class="btn btn-secondary" id="btnReiniciar">Reiniciar</button>
+      </div>
+      <p class="quote-legal">Al enviar sus datos de contacto, usted aprueba que sean procesados de acuerdo a la política de privacidad de Concretos del Pacífico, con lo que usted confirma que la ha leído y comprendido.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const linkProductos = document.getElementById('linkProductos');
+    if (linkProductos) {
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      const context = parts.length ? '/' + parts[0] : '';
+      linkProductos.setAttribute('href', context + '/productos.html');
+      linkProductos.setAttribute('target', '_self');
+    }
+    const openBtn = document.getElementById('btnCotizar');
+    const modal   = document.getElementById('cotizarModal');
+    const closeBtn= modal.querySelector('.modal-close');
+    const form    = document.getElementById('formCotiza');
+    function openModal(e){ e && e.preventDefault(); modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('modal-open'); }
+    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('modal-open'); }
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const prodChecked = form.querySelector('input[name="producto"]:checked');
+      if (!prodChecked) { alert('Selecciona un producto.'); return; }
+      const productoMap = { cemento:'Cemento', concreto:'Concreto', agregados:'Agregados', aditivos:'Aditivos', acero:'Acero' };
+      const producto = productoMap[prodChecked.value.toLowerCase()] || '';
+      const data = new URLSearchParams();
+      data.append('nombre',        document.getElementById('nombre').value.trim());
+      data.append('telefono',      document.getElementById('telefono').value.trim());
+      data.append('email',         document.getElementById('correo').value.trim());
+      data.append('codigo_postal', document.getElementById('cp').value.trim());
+      data.append('ciudad',        document.getElementById('ciudad').value.trim());
+      data.append('estado',        document.getElementById('estado').value.trim());
+      data.append('producto',      producto);
+      data.append('acepto',        document.getElementById('acepto').checked ? 'true' : 'false');
+      try {
+        const res = await fetch('api/cotizaciones', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }, body: data.toString() });
+        const json = await res.json();
+        if (json.ok) { alert('✅ ¡Gracias! Tu solicitud de cotización fue enviada y registrada.'); closeModal(); form.reset(); }
+        else { alert('❌ ' + (json.msg || 'No se pudo guardar la cotización.')); }
+      } catch (err) { alert('❌ Error de red: ' + err.message); }
+    });
+    document.getElementById('btnReiniciar').addEventListener('click', () => { form.reset(); });
+  })();
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const sitesData = [
+    { id:'maz', nombre:'Planta de Concreto Mazatlán', tipo:'concreto', lat:23.2494, lng:-106.4111, dir:'Zona Industrial, Mazatlán, Sinaloa, México', img:'img/si.jpg' },
+    { id:'cul', nombre:'Planta de Concreto Culiacán', tipo:'concreto', lat:24.7995, lng:-107.3898, dir:'Zona Industrial, Culiacán, Sinaloa, México', img:'img/concretos.jpg' }
+  ];
+
+  let userPos = null;
+  const map = L.map('map', { zoomControl:true });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'' }).addTo(map);
+
+  const markers = {};
+  const group = L.layerGroup().addTo(map);
+
+  function km(d){ return (d/1000).toFixed(1); }
+  function haversine(a,b){
+    const R=6371000, toRad=x=>x*Math.PI/180;
+    const dLat=toRad(b.lat-a.lat), dLng=toRad(b.lng-a.lng);
+    const s1=Math.sin(dLat/2), s2=Math.sin(dLng/2);
+    const A=s1*s1+Math.cos(toRad(a.lat))*Math.cos(toRad(b.lat))*s2*s2;
+    return 2*R*Math.asin(Math.sqrt(A));
+  }
+
+  function renderMarkers(list){
+    group.clearLayers();
+    Object.keys(markers).forEach(k=>delete markers[k]);
+    const created = [];
+    list.forEach(s=>{
+      const m=L.marker([s.lat,s.lng]).addTo(group);
+      m.bindPopup(`<strong>${s.nombre}</strong><br><small>${s.dir}</small>`);
+      m.on('click',()=>focusSite(s.id));
+      markers[s.id]=m;
+      created.push(m);
+    });
+    if(created.length){
+      const bounds = L.featureGroup(created).getBounds();
+      map.fitBounds(bounds, {padding:[50,50]});
+    }
+  }
+
+  function renderList(list){
+    const ul=document.getElementById('sitesList');
+    ul.innerHTML='';
+    list.forEach(s=>{
+      const li=document.createElement('li');
+      li.className='site';
+      li.dataset.id=s.id;
+      const distStr=s.distKm!=null?` (${s.distKm.toFixed(1)} km)`:''; 
+      li.innerHTML=`
+        <div class="site-head">
+          <h4 class="site-title">${s.nombre}${distStr}</h4>
+          <p class="site-dir">${s.dir}</p>
+        </div>
+        <div class="site-media">
+          <img src="${s.img}" alt="${s.nombre}">
+        </div>`;
+      li.addEventListener('click',()=>focusSite(s.id));
+      ul.appendChild(li);
+    });
+  }
+
+  function focusSite(id){
+    const s=sitesData.find(x=>x.id===id);
+    if(!s)return;
+    map.setView([s.lat,s.lng], 12, { animate:true });
+    const m=markers[id];
+    if(m){ m.openPopup(); }
+    document.querySelectorAll('.site').forEach(el=>el.classList.toggle('is-active', el.dataset.id===id));
+  }
+
+  function applyFilter(){
+    const q=document.getElementById('searchBox').value.trim().toLowerCase();
+    const f=document.getElementById('productFilter').value;
+    let list=sitesData.map(s=>({...s}));
+    if(f!=='todos') list=list.filter(s=>s.tipo===f);
+    if(q) list=list.filter(s=>s.nombre.toLowerCase().includes(q) || s.dir.toLowerCase().includes(q));
+    if(userPos){
+      list=list.map(s=>{
+        const d=haversine({lat:userPos.lat,lng:userPos.lng},{lat:s.lat,lng:s.lng});
+        return {...s, distKm:parseFloat(km(d))};
+      }).sort((a,b)=>(a.distKm||1e9)-(b.distKm||1e9));
+    }
+    renderMarkers(list);
+    renderList(list);
+  }
+
+  document.getElementById('searchBtn').addEventListener('click',applyFilter);
+  document.getElementById('searchBox').addEventListener('input',applyFilter);
+  document.getElementById('productFilter').addEventListener('change',applyFilter);
+  document.getElementById('geoBtn').addEventListener('click',()=>{
+    if(!navigator.geolocation){ applyFilter(); return; }
+    navigator.geolocation.getCurrentPosition(pos=>{
+      userPos={ lat:pos.coords.latitude, lng:pos.coords.longitude };
+      L.circleMarker([userPos.lat,userPos.lng],{radius:6}).addTo(map).bindPopup('Tu ubicación');
+      map.setView([userPos.lat,userPos.lng], 6);
+      applyFilter();
+    },()=>applyFilter(),{enableHighAccuracy:true,timeout:8000,maximumAge:60000});
+  });
+
+  applyFilter();
+</script>
+</body>
+</html>

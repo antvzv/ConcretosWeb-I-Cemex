@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productos - Concretos del Pacífico</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/compra_nuestros_productos.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <img src="img/logo.png" alt="Logo Concretos" class="brand-logo">
+    <div class="menu">
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="ingeniería.html">Ingeniería</a>
+      <a href="sostenibilidad.html">Sostenibilidad</a>
+      <a href="ubicaciones.html">Ubicaciones</a>
+    </div>
+    <a href="#" class="btn-cta" id="btnCotizar">Cotizar</a>
+  </div>
+</nav>
+
+<section class="cmp-shop" id="compra">
+  <div class="cmp-wrap">
+    <header class="cmp-head">
+      <div>
+        <h1 class="cmp-title">Compra nuestros productos</h1>
+        <p class="cmp-lead">Calcula tu volumen, personaliza aditivos y programa tu entrega. También puedes pedir bolsas de cemento con costo estimado y flete.</p>
+      </div>
+      <span class="cmp-badge">Entrega puntual · Asesoría incluida</span>
+    </header>
+
+    <div class="cmp-card">
+      <div class="cmp-tabs" role="tablist" aria-label="Selector de producto">
+        <button class="cmp-tab" role="tab" aria-selected="true" data-tab="concreto">Concreto premezclado</button>
+        <button class="cmp-tab" role="tab" aria-selected="false" data-tab="cemento">Bolsas de cemento</button>
+      </div>
+
+      <!-- ====== TAB: CONCRETO ====== -->
+      <div id="cmp-tab-concreto" role="tabpanel" aria-labelledby="concreto">
+        <div class="cmp-grid cmp-grid-2">
+          <div class="cmp-stack">
+            <fieldset class="cmp-fieldset">
+              <legend>Cálculo de volumen</legend>
+              <div class="cmp-row cmp-row-3">
+                <div>
+                  <label class="cmp-label">Modo</label>
+                  <select id="cmp-calcModo" class="cmp-input">
+                    <option value="directo">m³ (directo)</option>
+                    <option value="losa">Losa</option>
+                    <option value="cimentacion">Cimentación corrida</option>
+                    <option value="columna">Columnas</option>
+                    <option value="trabe">Trabes</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="cmp-label">Unidad</label>
+                  <select id="cmp-unidad" class="cmp-input">
+                    <option value="m">m</option>
+                    <option value="cm">cm</option>
+                    <option value="mm">mm</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="cmp-label">Volumen (m³)</label>
+                  <input id="cmp-volumen" class="cmp-input" type="number" step="0.001" min="0" placeholder="0.000">
+                  <div class="cmp-help">Se autocalcula con Losa/Cimentación/Columna/Trabe.</div>
+                </div>
+              </div>
+              <div id="cmp-calcCampos" class="cmp-row cmp-row-3"></div>
+
+              <div class="cmp-kpis">
+                <div class="cmp-kpi">
+                  <div>Volumen estimado</div>
+                  <b id="cmp-kpiVol">0.000 m³</b>
+                </div>
+                <div class="cmp-kpi">
+                  <div>Bolsas estimadas*</div>
+                  <b id="cmp-kpiBolsas">0</b>
+                  <div class="cmp-small">*aprox. para obra ligera</div>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="cmp-fieldset">
+              <legend>Especificaciones técnicas</legend>
+              <div class="cmp-row cmp-row-3">
+                <div>
+                  <label class="cmp-label">f’c</label>
+                  <select id="cmp-fc" class="cmp-input">
+                    <option value="200">200 kg/cm²</option>
+                    <option value="250" selected>250 kg/cm²</option>
+                    <option value="300">300 kg/cm²</option>
+                    <option value="350">350 kg/cm²</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="cmp-label">Slump</label>
+                  <select id="cmp-slump" class="cmp-input">
+                    <option value="bajo">Bajo</option>
+                    <option value="medio" selected>Medio</option>
+                    <option value="alto">Alto</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="cmp-label">Agregado máx.</label>
+                  <select id="cmp-agregado" class="cmp-input">
+                    <option value="3/8">3/8"</option>
+                    <option value="1/2">1/2"</option>
+                    <option value="3/4" selected>3/4"</option>
+                  </select>
+                </div>
+              </div>
+              <div class="cmp-checkrow">
+                <label class="cmp-check"><input type="checkbox" class="cmp-aditivo" value="acelerante"> Acelerante</label>
+                <label class="cmp-check"><input type="checkbox" class="cmp-aditivo" value="retardante"> Retardante</label>
+                <label class="cmp-check"><input type="checkbox" class="cmp-aditivo" value="impermeabilizante"> Impermeabilizante</label>
+                <label class="cmp-check"><input type="checkbox" class="cmp-aditivo" value="plastificante"> Plastificante</label>
+                <label class="cmp-check"><input type="checkbox" class="cmp-aditivo" value="fibras"> Fibras</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="cmp-fieldset">
+              <legend>Logística y bombeo</legend>
+              <div class="cmp-row cmp-row-2">
+                <div>
+                  <label class="cmp-label">Bombeo</label>
+                  <select id="cmp-bombeo" class="cmp-input">
+                    <option value="sin">Sin bomba</option>
+                    <option value="pluma">Pluma</option>
+                    <option value="estacionario">Estacionario</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="cmp-label">Longitud bomba (m)</label>
+                  <input id="cmp-longBomba" class="cmp-input" type="number" min="0" step="1" placeholder="0">
+                </div>
+              </div>
+              <div class="cmp-row cmp-row-3">
+                <div>
+                  <label class="cmp-label">Camión</label>
+                  <select id="cmp-camion" class="cmp-input">
+                    <option value="estandar">Revolvedora estándar</option>
+                    <option value="mini">Mini-mixer</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="cmp-label">Ventana de descarga (min)</label>
+                  <input id="cmp-ventana" class="cmp-input" type="number" min="20" step="5" value="45">
+                </div>
+                <label class="cmp-switch">
+                  <input id="cmp-dificil" type="checkbox">
+                  <span>Acceso difícil</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="cmp-fieldset">
+              <legend>Entrega y contacto</legend>
+              <div class="cmp-row cmp-row-2">
+                <div><label class="cmp-label">Fecha</label><input id="cmp-fecha" class="cmp-input" type="date"></div>
+                <div><label class="cmp-label">Hora</label><input id="cmp-hora" class="cmp-input" type="time"></div>
+              </div>
+              <div class="cmp-row cmp-row-2">
+                <div><label class="cmp-label">Dirección de entrega</label><input id="cmp-direccion" class="cmp-input" placeholder="Calle, número, colonia, ciudad"></div>
+                <div><label class="cmp-label">Código Postal</label><input id="cmp-cp" class="cmp-input" inputmode="numeric" placeholder="CP"></div>
+              </div>
+              <div class="cmp-row cmp-row-2">
+                <div><label class="cmp-label">Nombre</label><input id="cmp-nombre" class="cmp-input" autocomplete="name"></div>
+                <div><label class="cmp-label">Teléfono</label><input id="cmp-telefono" class="cmp-input" autocomplete="tel" placeholder="10 dígitos"></div>
+              </div>
+              <div><label class="cmp-label">Notas al operador</label><textarea id="cmp-notas" class="cmp-input" rows="3" placeholder="Referencias, restricciones, etc."></textarea></div>
+            </fieldset>
+          </div>
+
+          <div class="cmp-stack">
+            <fieldset class="cmp-fieldset">
+              <legend>Costeo estimado</legend>
+              <div id="cmp-alertMin" class="cmp-alert" role="alert" aria-live="polite">Mínimo de venta: 1.0 m³. Se aplicará tarifa por viaje si es menor.</div>
+              <table class="cmp-table">
+                <tbody>
+                  <tr><th>Precio base (m³)</th><td id="cmp-priceBase">$0.00</td></tr>
+                  <tr><th>Aditivos</th><td id="cmp-priceAdit">$0.00</td></tr>
+                  <tr><th>Bombeo</th><td id="cmp-priceBom">$0.00</td></tr>
+                  <tr><th>Flete / zona</th><td id="cmp-priceFlete">$0.00</td></tr>
+                  <tr><th>Descuento volumen</th><td id="cmp-priceDesc">-$0.00</td></tr>
+                  <tr><th>Subtotal</th><td id="cmp-priceSub">$0.00</td></tr>
+                  <tr><th>IVA (16%)</th><td id="cmp-priceIVA">$0.00</td></tr>
+                </tbody>
+              </table>
+              <div class="cmp-total">
+                <div class="cmp-line"><div>Total estimado</div><div class="cmp-grand" id="cmp-priceTot">$0.00</div></div>
+                <div class="cmp-small">Precios sujetos a confirmación y disponibilidad.</div>
+              </div>
+            </fieldset>
+
+            <fieldset class="cmp-fieldset">
+              <legend>Acciones</legend>
+              <div class="cmp-actions">
+                <button class="cmp-btn cmp-btn-ghost" id="cmp-btnResumen">Ver resumen</button>
+                <button class="cmp-btn cmp-btn-primary" id="cmp-btnCotizaConcreto">Solicitar cotización</button>
+                <button class="cmp-btn cmp-btn-ok" id="cmp-btnPedidoConcreto">Confirmar pedido</button>
+              </div>
+              <p class="cmp-note">Al confirmar, un asesor validará especificaciones y programará tu entrega.</p>
+            </fieldset>
+
+            <fieldset class="cmp-fieldset">
+              <legend>FAQ</legend>
+              <details><summary>Mínimo de pedido</summary><div class="cmp-help">El mínimo es 1.0 m³. Menores generan tarifa por viaje.</div></details>
+              <details><summary>Reprogramaciones</summary><div class="cmp-help">Con ≥24h son sin costo (sujeto a disponibilidad).</div></details>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== TAB: CEMENTO ====== -->
+      <div id="cmp-tab-cemento" role="tabpanel" class="cmp-hidden" aria-labelledby="cemento">
+        <div class="cmp-grid cmp-grid-2">
+          <div class="cmp-stack">
+            <fieldset class="cmp-fieldset">
+              <legend>Bolsas de cemento</legend>
+              <div class="cmp-row cmp-row-3">
+                <div><label class="cmp-label">Cantidad</label><input id="cmp-bolsas" class="cmp-input" type="number" min="0" step="1" value="0"></div>
+                <div><label class="cmp-label">Peso</label>
+                  <select id="cmp-pesoBolsa" class="cmp-input"><option value="50">50 kg</option><option value="25">25 kg</option></select>
+                </div>
+                <div><label class="cmp-label">Tipo</label>
+                  <select id="cmp-tipoCem" class="cmp-input">
+                    <option value="gris">Cemento gris</option>
+                    <option value="blanco">Cemento blanco</option>
+                    <option value="mortero">Mortero</option>
+                  </select>
+                </div>
+              </div>
+              <div class="cmp-row cmp-row-2">
+                <div><label class="cmp-label">m² de aplanado</label><input id="cmp-m2" class="cmp-input" type="number" min="0" step="1" value="0"></div>
+                <div><label class="cmp-label">Espesor (cm)</label><input id="cmp-esp" class="cmp-input" type="number" min="0.5" step="0.5" value="2"></div>
+              </div>
+            </fieldset>
+
+            <!-- >>> BLOQUE NUEVO / COMPLETO: CP + NOMBRE + TELÉFONO <<< -->
+            <fieldset class="cmp-fieldset">
+              <legend>Entrega y contacto</legend>
+
+              <div class="cmp-row cmp-row-2">
+                <div>
+                  <label class="cmp-label">Fecha</label>
+                  <input id="cmp-fechaC" class="cmp-input" type="date">
+                </div>
+                <div>
+                  <label class="cmp-label">Hora</label>
+                  <input id="cmp-horaC" class="cmp-input" type="time">
+                </div>
+              </div>
+
+              <div class="cmp-row cmp-row-2">
+                <div>
+                  <label class="cmp-label">Dirección</label>
+                  <input id="cmp-dirC" class="cmp-input" placeholder="Calle, número, colonia, ciudad">
+                </div>
+                <div>
+                  <label class="cmp-label">Código Postal</label>
+                  <input id="cmp-cpC" class="cmp-input" inputmode="numeric" maxlength="5" placeholder="CP">
+                </div>
+              </div>
+
+              <div class="cmp-row cmp-row-3">
+                <div>
+                  <label class="cmp-label">Nombre</label>
+                  <input id="cmp-nombreC" class="cmp-input" autocomplete="name" placeholder="Nombre del contacto">
+                </div>
+                <div>
+                  <label class="cmp-label">Teléfono</label>
+                  <input id="cmp-telefonoC" class="cmp-input" inputmode="tel" autocomplete="tel" placeholder="10 dígitos">
+                </div>
+                <div>
+                  <label class="cmp-label">Notas / otros datos (opcional)</label>
+                  <input id="cmp-contactoC" class="cmp-input" placeholder="Referencias u otro teléfono">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="cmp-stack">
+            <fieldset class="cmp-fieldset">
+              <legend>Costeo estimado</legend>
+              <table class="cmp-table">
+                <tbody>
+                  <tr><th>Precio por bolsa</th><td id="cmp-precioBolsa">$0.00</td></tr>
+                  <tr><th>Cantidad</th><td id="cmp-cantBolsa">0</td></tr>
+                  <tr><th>Flete / zona</th><td id="cmp-fleteC">$0.00</td></tr>
+                  <tr><th>Subtotal</th><td id="cmp-subC">$0.00</td></tr>
+                  <tr><th>IVA (16%)</th><td id="cmp-ivaC">$0.00</td></tr>
+                </tbody>
+              </table>
+              <div class="cmp-total">
+                <div class="cmp-line"><div>Total estimado</div><div class="cmp-grand" id="cmp-totC">$0.00</div></div>
+              </div>
+            </fieldset>
+
+            <fieldset class="cmp-fieldset">
+              <legend>Acciones</legend>
+              <div class="cmp-actions">
+                <button class="cmp-btn cmp-btn-ghost" id="cmp-btnResumenCem">Ver resumen</button>
+                <button class="cmp-btn cmp-btn-primary" id="cmp-btnCotizaCem">Solicitar cotización</button>
+                <button class="cmp-btn cmp-btn-ok" id="cmp-btnPedidoCem">Confirmar pedido</button>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <!-- ====== /TAB: CEMENTO ====== -->
+    </div>
+  </div>
+
+  <div class="cmp-modal" id="cmp-modal">
+    <div class="cmp-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="cmp-modal-title">
+      <h3 id="cmp-modal-title">Resumen de tu pedido</h3>
+      <div id="cmp-resumen"></div>
+      <div class="cmp-modal-actions">
+        <button class="cmp-btn" id="cmp-cerrarModal">Cerrar</button>
+        <button class="cmp-btn cmp-btn-primary" id="cmp-enviarModal">Enviar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer">
+  <div class="container footer-columns">
+    <div class="footer-col">
+      <h4>Concretos del Pacífico</h4>
+      <ul class="footer-list">
+        <li><a href="#">Empresa Sinaloense</a></li>
+        <li><a href="#">Valores</a></li>
+        <li><a href="#">Misión</a></li>
+        <li><a href="#">Trabajo con nosotros</a></li>
+        <li><a href="#">Ética y profesionalismo</a></li>
+        <li><a href="#">Contáctanos</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Media & Links</h4>
+      <ul class="footer-list">
+        <li><a href="#">Manifiesto de Servicio</a></li>
+        <li><a href="#">Sala de prensa</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Política y seguros</a></li>
+        <li><a href="#">Mapa de Sitio</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Proyecto de Administración de Base de Datos</h4>
+      <p class="footer-text">Proyecto con fines de aprendizaje; cualquier parecido con una empresa real es coincidencia.</p>
+      <p class="footer-text"><strong>Universidad Politécnica de Sinaloa</strong></p>
+    </div>
+  </div>
+
+  <div class="legal-bar">
+    <div class="container legal-inner">
+      <p>© 2025 Concretos del Pacífico · Todos los derechos reservados.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><img src="img/Logo_de_Facebook.png" alt="Facebook" width="22" height="22"></a>
+        <a href="#" aria-label="X"><img src="img/X-Logo.png" alt="X" width="22" height="22"></a>
+        <a href="#" aria-label="YouTube"><img src="img/Youtube_logo.png" alt="YouTube" width="22" height="22"></a>
+        <a href="#" aria-label="Instagram"><img src="img/5968776.png" alt="Instagram" width="22" height="22"></a>
+        <a href="#" aria-label="TikTok"><img src="img/Tiktok-Logo-2016.png" alt="TikTok" width="22" height="22"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Modal Cotizaciones existente ===== -->
+<div class="modal" id="cotizarModal" aria-hidden="true">
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="titleCot">
+    <button class="modal-close" type="button" aria-label="Cerrar">×</button>
+
+    <form id="formCotiza" class="quote-form">
+      <h2 id="titleCot" class="quote-title">Cotizaciones</h2>
+
+      <div class="quote-grid">
+        <div class="field"><label for="nombre">Nombre y apellido:</label><input type="text" id="nombre" name="nombre" autocomplete="name" /></div>
+        <div class="field"><label for="telefono">Teléfono:</label><input type="tel" id="telefono" name="telefono" autocomplete="tel" /></div>
+        <div class="field"><label for="correo">Correo Electrónico:</label><input type="email" id="correo" name="correo" autocomplete="email" /></div>
+        <div class="field"><label for="cp">Código Postal:</label><input type="text" id="cp" name="cp" inputmode="numeric" /></div>
+        <div class="field"><label for="ciudad">Ciudad/Municipio:</label><input type="text" id="ciudad" name="ciudad" /></div>
+        <div class="field"><label for="estado">Estado:</label><input type="text" id="estado" name="estado" /></div>
+      </div>
+
+      <h3 class="quote-subtitle">Productos</h3>
+      <p class="quote-help">Selecciona el producto que necesitas:</p>
+
+      <div class="products-row">
+        <label class="radio"><input type="radio" name="producto" value="cemento"><span>Cemento</span></label>
+        <label class="radio"><input type="radio" name="producto" value="concreto"><span>Concreto</span></label>
+        <label class="radio"><input type="radio" name="producto" value="agregados"><span>Agregados</span></label>
+        <label class="radio"><input type="radio" name="producto" value="aditivos"><span>Aditivos</span></label>
+        <label class="radio"><input type="radio" name="producto" value="acero"><span>Acero</span></label>
+      </div>
+
+      <hr class="quote-sep" />
+      <label class="check"><input type="checkbox" id="acepto" name="acepto"><span>Acepto</span></label>
+
+      <div class="quote-actions">
+        <button type="submit" class="btn btn-primary">Solicitar Cotización</button>
+        <button type="reset" class="btn btn-secondary" id="btnReiniciar">Reiniciar</button>
+      </div>
+
+      <p class="quote-legal">
+        Al enviar sus datos de contacto, usted aprueba que sean procesados de acuerdo a la
+        política de privacidad de Concretos del Pacífico, con lo que usted confirma que la
+        ha leído y comprendido.
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- ================== JS ================== -->
+<script>
+(() => {
+  const $  = (s, r=document)=> r.querySelector(s);
+  const $$ = (s, r=document)=> Array.from(r.querySelectorAll(s));
+  const money = (n)=> Number(Number.isFinite(+n) ? +n : 0)
+                      .toLocaleString('es-MX',{style:'currency',currency:'MXN'});
+  const n = (v)=> { v = Number(v); return Number.isFinite(v) ? v : 0; };
+
+  function apiUrl(path) {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    const ctx = parts.length ? '/' + parts[0] : '';
+    return ctx + '/api/' + String(path).replace(/^\/+/, '');
+  }
+
+  async function postForm(url, urlSearchParams) {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8',
+        'Accept':'application/json'
+      },
+      body: urlSearchParams.toString()
+    });
+    const ct = (res.headers.get('content-type')||'').toLowerCase();
+    const text = await res.text();
+    if (!ct.includes('application/json')) {
+      throw new Error(`Respuesta no JSON (${res.status}): ${text.slice(0,200)}`);
+    }
+    let json;
+    try { json = JSON.parse(text); }
+    catch { throw new Error(`JSON inválido (${res.status}): ${text.slice(0,200)}`); }
+    if (!res.ok || (json && json.ok === false)) {
+      throw new Error((json && json.msg) || `HTTP ${res.status}`);
+    }
+    return json;
+  }
+
+  const safe = (fn)=>{ try { fn(); } catch(_) {} };
+
+  // Enlace dinámico (opcional)
+  safe(() => {
+    const linkProductos = $('#linkProductos');
+    if (linkProductos) {
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      const context = parts.length ? '/' + parts[0] : '';
+      linkProductos.setAttribute('href', context + '/productos.html');
+      linkProductos.setAttribute('target', '_self');
+    }
+  });
+
+  // ===== Modal Cotizar existente
+  safe(() => {
+    const openBtn = $('#btnCotizar');
+    const modal   = $('#cotizarModal');
+    if (!modal || !openBtn) return;
+
+    const closeBtn= modal.querySelector('.modal-close');
+    const form    = $('#formCotiza');
+
+    function openModal(e){
+      e && e.preventDefault();
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('modal-open');
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const prodChecked = form.querySelector('input[name="producto"]:checked');
+      if (!prodChecked) { alert('Selecciona un producto.'); return; }
+      const productoMap = { cemento:'Cemento', concreto:'Concreto', agregados:'Agregados', aditivos:'Aditivos', acero:'Acero' };
+      const producto = productoMap[prodChecked.value.toLowerCase()] || '';
+
+      const data = new URLSearchParams();
+      data.append('nombre',        $('#nombre').value.trim());
+      data.append('telefono',      $('#telefono').value.trim());
+      data.append('email',         $('#correo').value.trim());
+      data.append('codigo_postal', $('#cp').value.trim());
+      data.append('ciudad',        $('#ciudad').value.trim());
+      data.append('estado',        $('#estado').value.trim());
+      data.append('producto',      producto);
+      data.append('acepto',        $('#acepto').checked ? 'true' : 'false');
+
+      try {
+        const json = await postForm(apiUrl('cotizaciones'), data);
+        alert('✅ ' + (json.msg || '¡Gracias! Tu solicitud fue registrada.'));
+        closeModal();
+        form.reset();
+      } catch (err) {
+        alert('❌ ' + err.message);
+      }
+    });
+
+    $('#btnReiniciar').addEventListener('click', () => form.reset());
+  });
+
+  // ===== Sección Compra
+  safe(() => {
+    const root = $('.cmp-shop');
+    if (!root) return;
+
+    // Tabs
+    $$('.cmp-tab', root).forEach(b=>{
+      b.addEventListener('click', ()=>{
+        $$('.cmp-tab', root).forEach(x=>x.setAttribute('aria-selected','false'));
+        b.setAttribute('aria-selected','true');
+        const t = b.dataset.tab;
+        $('#cmp-tab-concreto', root).classList.toggle('cmp-hidden', t!=='concreto');
+        $('#cmp-tab-cemento', root).classList.toggle('cmp-hidden', t!=='cemento');
+      });
+    });
+
+    // Precios / rendimiento
+    const PRICES = {
+      concretoBasePorFc: {200:1750, 250:1850, 300:1980, 350:2120},
+      aditivos: {acelerante:120, retardante:90, impermeabilizante:140, plastificante:80, fibras:160},
+      bombeo: { sin:{base:0,porMetro:0}, pluma:{base:2800,porMetro:10}, estacionario:{base:1800,porMetro:8} },
+      fleteZona: { base: 700 },
+      descuentoPorVolumen: [{min:5,pct:3},{min:10,pct:6},{min:20,pct:10}],
+      minimoM3: 1.0,
+      tarifaMinimo: 600,
+      bolsa: { gris:190, blanco:260, mortero:170 }
+    };
+    const REND = { bolsasPorM3:5, bolsasPorM2A1cm:0.6 };
+    const toM = (v,u)=>{ v=Number(v)||0; if(u==='m')return v; if(u==='cm')return v/100; if(u==='mm')return v/1000; return v; };
+    const normStr = (s)=> String(s||'').trim().toLowerCase();
+
+    // Refs Concreto
+    const calcModo = $('#cmp-calcModo', root), unidad = $('#cmp-unidad', root), volumen = $('#cmp-volumen', root), campos = $('#cmp-calcCampos', root);
+    const kpiVol = $('#cmp-kpiVol', root), kpiB = $('#cmp-kpiBolsas', root);
+    const fc = $('#cmp-fc', root), slump = $('#cmp-slump', root), agregado = $('#cmp-agregado', root);
+    const aditivos = $$('.cmp-aditivo', root);
+    const bombeo = $('#cmp-bombeo', root), longB = $('#cmp-longBomba', root), camion = $('#cmp-camion', root), ventana = $('#cmp-ventana', root), dificil = $('#cmp-dificil', root);
+
+    const pBase = $('#cmp-priceBase', root), pAd = $('#cmp-priceAdit', root), pBom = $('#cmp-priceBom', root), pFlete = $('#cmp-priceFlete', root), pDesc = $('#cmp-priceDesc', root), pSub = $('#cmp-priceSub', root), pIVA = $('#cmp-priceIVA', root), pTot = $('#cmp-priceTot', root);
+    const alertMin = $('#cmp-alertMin', root);
+
+    const totals = { sub:0, iva:0, tot:0 };
+
+    function renderCampos(){
+      const m = calcModo.value;
+      let html='';
+      if(m==='losa'){
+        html = `
+          <div><label class="cmp-label">Largo</label><input id="cmp-largo" class="cmp-input" type="number" step="0.001"></div>
+          <div><label class="cmp-label">Ancho</label><input id="cmp-ancho" class="cmp-input" type="number" step="0.001"></div>
+          <div><label class="cmp-label">Espesor</label><input id="cmp-espesor" class="cmp-input" type="number" step="0.001"></div>`;
+      }else if(m==='cimentacion'){
+        html = `
+          <div><label class="cmp-label">Longitud</label><input id="cmp-longitud" class="cmp-input" type="number" step="0.001"></div>
+          <div><label class="cmp-label">Ancho</label><input id="cmp-ancho" class="cmp-input" type="number" step="0.001"></div>
+          <div><label class="cmp-label">Altura</label><input id="cmp-altura" class="cmp-input" type="number" step="0.001"></div>`;
+      }else if(m==='columna'){
+        html = `
+          <div><label class="cmp-label">Cantidad</label><input id="cmp-cant" class="cmp-input" type="number" step="1"></div>
+          <div><label class="cmp-label">Sección (lado)</label><input id="cmp-lado" class="cmp-input" type="number" step="0.001"></div>
+          <div><label class="cmp-label">Altura</label><input id="cmp-altura" class="cmp-input" type="number" step="0.001"></div>`;
+      }else if(m==='trabe'){
+        html = `
+          <div><label class="cmp-label">Cantidad</label><input id="cmp-cant" class="cmp-input" type="number" step="1"></div>
+          <div><label class="cmp-label">Sección (ancho)</label><input id="cmp-ancho" class="cmp-input" type="number" step="0.001"></div>
+          <div><label class="cmp-label">Longitud</label><input id="cmp-longitud" class="cmp-input" type="number" step="0.001"></div>`;
+      }
+      campos.innerHTML = html;
+    }
+    renderCampos();
+
+    function calcVol(){
+      const m = calcModo.value, u=unidad.value;
+      let vol = Number(volumen.value)||0;
+      if(m!=='directo'){
+        if(m==='losa'){
+          const L = toM($('#cmp-largo',root)?.value,u), A=toM($('#cmp-ancho',root)?.value,u), E=toM($('#cmp-espesor',root)?.value,u); vol = L*A*E;
+        }else if(m==='cimentacion'){
+          const Lo=toM($('#cmp-longitud',root)?.value,u), An=toM($('#cmp-ancho',root)?.value,u), Al=toM($('#cmp-altura',root)?.value,u); vol = Lo*An*Al;
+        }else if(m==='columna'){
+          const c=Number($('#cmp-cant',root)?.value)||0, lado=toM($('#cmp-lado',root)?.value,u), h=toM($('#cmp-altura',root)?.value,u); vol = c*lado*lado*h;
+        }else if(m==='trabe'){
+          const c=Number($('#cmp-cant',root)?.value)||0, an=toM($('#cmp-ancho',root)?.value,u), lo=toM($('#cmp-longitud',root)?.value,u); vol = c*an*an*lo;
+        }
+        volumen.value = vol>0 ? vol.toFixed(3) : '';
+      }
+      const bolsas = Math.ceil((vol||0)*REND.bolsasPorM3);
+      kpiVol.textContent = (vol||0).toFixed(3)+' m³';
+      kpiB.textContent = bolsas;
+      costear();
+    }
+
+    function costear(){
+      const fcKey = parseInt(String(fc.value).replace(/\D+/g,''), 10) || 250;
+      const slumpKey = normStr(slump.value);
+      const agKey = String(agregado.value || '').replace(/[^0-9/]/g,'');
+      const bomKey = normStr(bombeo.value);
+
+      const vol = Math.max(0, n(volumen.value));
+      let baseM3 = PRICES.concretoBasePorFc[fcKey];
+      if (!Number.isFinite(baseM3)) baseM3 = PRICES.concretoBasePorFc[250];
+
+      if (slumpKey === 'alto') baseM3 += 60;
+      if (agKey === '3/8') baseM3 += 40;
+
+      let base = n(baseM3) * vol;
+
+      let ad = 0;
+      aditivos.forEach(x=>{
+        if(x.checked){
+          const px = PRICES.aditivos[normStr(x.value)];
+          ad += n(px) * vol;
+        }
+      });
+
+      const bom = PRICES.bombeo[bomKey] || PRICES.bombeo.sin;
+      const L = Math.max(0, n(longB.value));
+      let bomC = n(bom.base) + n(bom.perMetro) * L;
+
+      let flete = n(PRICES.fleteZona.base) + (Boolean(dificil.checked) ? 250 : 0);
+
+      let cargoMin = 0;
+      if (vol>0 && vol<PRICES.minimoM3){ alertMin.style.display='block'; cargoMin = PRICES.tarifaMinimo; }
+      else { alertMin.style.display='none'; }
+
+      let descPct = 0;
+      PRICES.descuentoPorVolumen.forEach(t=>{ if(vol>=t.min) descPct = t.pct; });
+      const desc = (n(base)+n(ad))*(descPct/100);
+
+      const sub = Math.max(0, n(base)+n(ad)+n(bomC)+n(flete)+n(cargoMin) - n(desc));
+      const iva = n(sub)*0.16, tot = n(sub)+n(iva);
+
+      pBase.textContent = money(base);
+      pAd.textContent   = money(ad);
+      pBom.textContent  = money(bomC);
+      pFlete.textContent= money(flete+cargoMin);
+      pDesc.textContent = '-'+money(desc);
+      pSub.textContent  = money(sub);
+      pIVA.textContent  = money(iva);
+      pTot.textContent  = money(tot);
+
+      totals.sub=sub; totals.iva=iva; totals.tot=tot;
+    }
+
+    calcModo.addEventListener('change', ()=>{ renderCampos(); calcVol(); });
+    unidad.addEventListener('change', calcVol);
+    ['input','change'].forEach(ev=>{
+      campos.addEventListener(ev, calcVol);
+      volumen.addEventListener(ev, calcVol);
+      [fc,slump,agregado,bombeo,longB,camion,ventana].forEach(el=>el.addEventListener(ev, costear));
+      aditivos.forEach(el=>el.addEventListener(ev, costear));
+      dificil.addEventListener(ev, costear);
+    });
+
+    // Cemento
+    const bolsas = $('#cmp-bolsas',root), peso = $('#cmp-pesoBolsa',root), tipo = $('#cmp-tipoCem',root), m2 = $('#cmp-m2',root), esp = $('#cmp-esp',root);
+    const pBol = $('#cmp-precioBolsa',root), qBol = $('#cmp-cantBolsa',root), fC = $('#cmp-fleteC',root), sC = $('#cmp-subC',root), iC = $('#cmp-ivaC',root), tC = $('#cmp-totC',root);
+    const totalsC = { sub:0, iva:0, tot:0 };
+
+    function costearCem(){
+      let qty = Math.max(0, n(bolsas.value));
+      const precioU = ({gris:190,blanco:260,mortero:170})[normStr(tipo.value)] || 0;
+
+      const area = Math.max(0, n(m2.value)), e = Math.max(0.5, n(esp.value)||2);
+      if(area>0){ qty = Math.ceil(area * REND.bolsasPorM2A1cm * (e/1)); bolsas.value = qty; }
+
+      const flete = qty>0 ? 200 : 0;
+      const sub = qty*Number(precioU) + flete, iva=sub*0.16, tot=sub+iva;
+
+      pBol.textContent = money(precioU);
+      qBol.textContent = qty;
+      fC.textContent   = money(flete);
+      sC.textContent   = money(sub);
+      iC.textContent   = money(iva);
+      tC.textContent   = money(tot);
+
+      totalsC.sub=sub; totalsC.iva=iva; totalsC.tot=tot;
+    }
+    [bolsas,peso,tipo,m2,esp].forEach(el=>el.addEventListener('input', costearCem));
+
+    // Modal resumen
+    const modal = $('#cmp-modal',root), resumen = $('#cmp-resumen',root);
+    const openResumen = (html)=>{ resumen.innerHTML = html; modal.classList.add('open'); };
+    const closeResumen = ()=> modal.classList.remove('open');
+    $('#cmp-cerrarModal',root).addEventListener('click', closeResumen);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeResumen(); });
+
+    function resumenConcreto(){
+      const html = `
+        <table class="cmp-table">
+          <tr><th>Producto</th><td>Concreto f’c ${parseInt(String(fc.value).replace(/\D+/g,''),10)||'-'} · slump ${slump.value} · agregado ${String(agregado.value).replace(/[^0-9/"]/g,'')||'-'}</td></tr>
+          <tr><th>Volumen</th><td>${(n(volumen.value)).toFixed(3)} m³</td></tr>
+          <tr><th>Aditivos</th><td>${$$('.cmp-aditivo:checked',root).map(x=>x.value).join(', ')||'N/A'}</td></tr>
+          <tr><th>Bombeo</th><td>${bombeo.value} (${n(longB.value)} m)</td></tr>
+          <tr><th>Camión</th><td>${camion.value}</td></tr>
+          <tr><th>Entrega</th><td>${$('#cmp-fecha',root).value||'-'} ${$('#cmp-hora',root).value||''}</td></tr>
+          <tr><th>Dirección</th><td>${$('#cmp-direccion',root).value||'-'} (CP ${$('#cmp-cp',root).value||'-'})</td></tr>
+          <tr><th>Contacto</th><td>${$('#cmp-nombre',root).value||'-'} · ${$('#cmp-telefono',root).value||'-'}</td></tr>
+        </table>
+        <hr>
+        <div class="cmp-kpis">
+          <div class="cmp-kpi"><div>Subtotal</div><b>${money(totals.sub)}</b></div>
+          <div class="cmp-kpi"><div>Total</div><b>${money(totals.tot)}</b></div>
+        </div>`;
+      openResumen(html);
+    }
+    function resumenCem(){
+      const html = `
+        <table class="cmp-table">
+          <tr><th>Producto</th><td>Cemento (${tipo.value}) · ${peso.value} kg</td></tr>
+          <tr><th>Cantidad</th><td>${bolsas.value}</td></tr>
+          <tr><th>Entrega</th><td>${$('#cmp-fechaC',root).value||'-'} ${$('#cmp-horaC',root).value||''}</td></tr>
+          <tr><th>Dirección</th><td>${$('#cmp-dirC',root).value||'-'} (CP ${$('#cmp-cpC',root).value||'-'})</td></tr>
+          <tr><th>Contacto</th><td>${$('#cmp-nombreC',root).value||'-'} · ${$('#cmp-telefonoC',root).value||'-'}</td></tr>
+        </table>
+        <hr>
+        <div class="cmp-kpis">
+          <div class="cmp-kpi"><div>Subtotal</div><b>${money(totalsC.sub)}</b></div>
+          <div class="cmp-kpi"><div>Total</div><b>${money(totalsC.tot)}</b></div>
+        </div>`;
+      openResumen(html);
+    }
+    $('#cmp-btnResumen',root).addEventListener('click', resumenConcreto);
+    $('#cmp-btnResumenCem',root).addEventListener('click', resumenCem);
+
+    // Validaciones y envío
+    function validarConcreto(){
+      const vol = n($('#cmp-volumen',root).value);
+      if(vol<=0){ alert('Ingresa un volumen válido.'); return false; }
+      if(!$('#cmp-direccion',root).value || !$('#cmp-cp',root).value){ alert('Ingresa dirección y CP.'); return false; }
+      if(!$('#cmp-fecha',root).value || !$('#cmp-hora',root).value){ alert('Selecciona fecha y hora.'); return false; }
+      if(!$('#cmp-nombre',root).value || !$('#cmp-telefono',root).value){ alert('Completa nombre y teléfono.'); return false; }
+      return true;
+    }
+    function validarCemento(){
+      if(!$('#cmp-cpC',root).value){ alert('CP requerido.'); return false; }
+      if(!$('#cmp-nombreC',root).value){ alert('Nombre requerido.'); return false; }
+      if(!$('#cmp-telefonoC',root).value){ alert('Teléfono requerido.'); return false; }
+      return true;
+    }
+    const fin = (v)=> Number.isFinite(+v) ? String(+v) : '';
+
+    async function enviarConcreto(action){
+      if(!validarConcreto()) return;
+
+      const data = new URLSearchParams();
+      data.append('tipo', 'CONCRETO');
+      data.append('accion', action);
+      data.append('volumen', String(n($('#cmp-volumen',root).value)));
+      data.append('fc', String(parseInt(String(fc.value).replace(/\D+/g,''),10)||''));
+      data.append('slump', normStr($('#cmp-slump',root).value));
+      data.append('agregado', String($('#cmp-agregado',root).value).replace(/[^0-9/]/g,''));
+      data.append('aditivos', $$('.cmp-aditivo:checked',root).map(x=>normStr(x.value)).join(','));
+      data.append('bombeo', normStr($('#cmp-bombeo',root).value));
+      data.append('longitud_bomba', String(n($('#cmp-longBomba',root).value)));
+      data.append('camion', $('#cmp-camion',root).value);
+      data.append('ventana', $('#cmp-ventana',root).value||'');
+      data.append('acceso_dificil', $('#cmp-dificil',root).checked ? 'true' : 'false');
+      data.append('fecha', $('#cmp-fecha',root).value);
+      data.append('hora', $('#cmp-hora',root).value);
+      data.append('direccion', $('#cmp-direccion',root).value);
+      data.append('cp', $('#cmp-cp',root).value);
+      data.append('nombre', $('#cmp-nombre',root).value);
+      data.append('telefono', $('#cmp-telefono',root).value);
+      data.append('notas', $('#cmp-notas',root).value||'');
+      data.append('subtotal', fin(totals.sub));
+      data.append('iva',      fin(totals.iva));
+      data.append('total',    fin(totals.tot));
+
+      try{
+        const json = await postForm(apiUrl('pedidos'), data);
+        alert('✅ ' + (json.msg || (action==='COTIZAR'?'Cotización enviada.':'Pedido registrado.')));
+      }catch(err){
+        alert('❌ ' + err.message);
+      }
+    }
+
+    async function enviarCemento(action){
+      if(!validarCemento()) return;
+
+      const d = new URLSearchParams();
+      d.append('tipo','CEMENTO');
+      d.append('accion', action);
+      d.append('cp', $('#cmp-cpC',root).value);
+      d.append('nombre', $('#cmp-nombreC',root).value);
+      d.append('telefono', $('#cmp-telefonoC',root).value);
+      d.append('fecha', $('#cmp-fechaC',root).value);
+      d.append('hora',  $('#cmp-horaC',root).value);
+      d.append('direccion', $('#cmp-dirC',root).value);
+      d.append('cantidad', String(n($('#cmp-bolsas',root).value)));
+      d.append('peso', String(n($('#cmp-pesoBolsa',root).value)));
+      d.append('tipo_cemento', normStr($('#cmp-tipoCem',root).value));
+      d.append('m2', String(n($('#cmp-m2',root).value)));
+      d.append('espesor', String(n($('#cmp-esp',root).value)));
+      d.append('subtotal', fin(totalsC.sub));
+      d.append('iva',      fin(totalsC.iva));
+      d.append('total',    fin(totalsC.tot));
+
+      try{
+        const json = await postForm(apiUrl('pedidos'), d);
+        alert('✅ ' + (json.msg || (action==='COTIZAR'?'Cotización enviada.':'Pedido registrado.')));
+      }catch(err){
+        alert('❌ ' + err.message);
+      }
+    }
+
+    $('#cmp-btnResumen',root)?.addEventListener('click', resumenConcreto);
+    $('#cmp-btnResumenCem',root)?.addEventListener('click', resumenCem);
+    $('#cmp-btnCotizaConcreto',root)?.addEventListener('click', ()=>enviarConcreto('COTIZAR'));
+    $('#cmp-btnPedidoConcreto',root)?.addEventListener('click', ()=>enviarConcreto('PEDIR'));
+    $('#cmp-btnCotizaCem',root)?.addEventListener('click', ()=>enviarCemento('COTIZAR'));
+    $('#cmp-btnPedidoCem',root)?.addEventListener('click', ()=>enviarCemento('PEDIR'));
+
+    // init
+    calcVol(); costear(); costearCem();
+  });
+})();
+</script>
+</body>
+</html>
